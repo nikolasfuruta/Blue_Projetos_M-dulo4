@@ -1,0 +1,654 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "BLUE Projeto01 Mod-4",
+        "description": "API de integração com o banco de dados PostgreSQL utilizando NestJS e Prisma",
+        "version": "1.0",
+        "license": {
+            "name": "GPLv3",
+            "url": "https://www.gnu.org/licenses/quick-guide-gplv3.pt-br.html"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost/3000",
+            "description": "API Teste"
+        }
+    ],
+    "paths": {
+        "/generos/add": {
+            "post": {
+                "summary": "Adiciona um Gêneros",
+                "operationId": "GenerosController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "example": "Ação"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "ADICIONADO"
+                    },
+                    "400": {
+                        "description": "NÃO ADICIONADO"
+                    }
+                },
+                "tags": [
+                    "generos"
+                ]
+            }
+        },
+        "/generos/listall": {
+            "get": {
+                "summary": "Lista todos os Gêneros",
+                "operationId": "GenerosController_findAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "example": 1
+                                        },
+                                        "nome": {
+                                            "example": "Nikolas"
+                                        },
+                                        "filmes": {
+                                            "example": [
+                                                {
+                                                    "id": 1
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NÃO EXECUTADO"
+                    }
+                },
+                "tags": [
+                    "generos"
+                ]
+            }
+        },
+        "/generos/listid/{id}": {
+            "get": {
+                "summary": "Exibe um Gênero pelo seu ID",
+                "operationId": "GenerosController_findOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do genero",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "example": 1
+                                        },
+                                        "nome": {
+                                            "example": "Nikolas"
+                                        },
+                                        "filmes": {
+                                            "example": [
+                                                {
+                                                    "id": 1
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "generos"
+                ]
+            }
+        },
+        "/generos/update/{id}": {
+            "patch": {
+                "summary": "Altera um Gênero",
+                "operationId": "GenerosController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do genero",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "example": "Ação"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO"
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "generos"
+                ]
+            }
+        },
+        "/generos/delete/{id}": {
+            "delete": {
+                "summary": "Deleta um Gênero",
+                "operationId": "GenerosController_remove",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do genero",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO"
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "generos"
+                ]
+            }
+        },
+        "/participantes/add": {
+            "post": {
+                "summary": "Adiciona um Participante",
+                "operationId": "ParticipantesController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "example": "Nikolas"
+                                    },
+                                    "imagemUrl": {
+                                        "example": "nikolas.jpeg"
+                                    },
+                                    "nascimento": {
+                                        "example": "1989-05-12T00:00:00.000Z"
+                                    },
+                                    "filme_id": {
+                                        "example": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "ADICIONADO"
+                    },
+                    "400": {
+                        "description": "NÃO ADICIONADO"
+                    }
+                },
+                "tags": [
+                    "participantes"
+                ]
+            }
+        },
+        "/participantes/listall": {
+            "get": {
+                "summary": "Lista todos os Participantes",
+                "operationId": "ParticipantesController_findAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "example": 1
+                                        },
+                                        "nome": {
+                                            "example": "Nikolas"
+                                        },
+                                        "imagemUrl": {
+                                            "example": "nikolas.jpeg"
+                                        },
+                                        "nascimento": {
+                                            "example": "1989-05-12T00:00:00.000Z"
+                                        },
+                                        "filme_id": {
+                                            "example": 1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NÃO EXECUTADO"
+                    }
+                },
+                "tags": [
+                    "participantes"
+                ]
+            }
+        },
+        "/participantes/listid/{id}": {
+            "get": {
+                "summary": "Exibe um Participante pelo seu ID",
+                "operationId": "ParticipantesController_findOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do participante",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "example": 1
+                                        },
+                                        "nome": {
+                                            "example": "Nikolas"
+                                        },
+                                        "imagemUrl": {
+                                            "example": "nikolas.jpeg"
+                                        },
+                                        "nascimento": {
+                                            "example": "1989-05-12T00:00:00.000Z"
+                                        },
+                                        "filme_id": {
+                                            "example": 1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "participantes"
+                ]
+            }
+        },
+        "/participantes/update/{id}": {
+            "patch": {
+                "summary": "Altera um Participante",
+                "operationId": "ParticipantesController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do participante",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "example": "Nikolas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO"
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "participantes"
+                ]
+            }
+        },
+        "/participantes/delete/{id}": {
+            "delete": {
+                "summary": "Deleta um Participante",
+                "operationId": "ParticipantesController_remove",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do participante",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO"
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "participantes"
+                ]
+            }
+        },
+        "/filmes/add": {
+            "post": {
+                "summary": "Adiciona um Filme",
+                "operationId": "FilmesController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "example": "Nikolas"
+                                    },
+                                    "imagemUrl": {
+                                        "example": "nikolas.jpeg"
+                                    },
+                                    "duracao": {
+                                        "example": 1
+                                    },
+                                    "genero_id": {
+                                        "example": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "ADICIONADO"
+                    },
+                    "400": {
+                        "description": "NÃO ADICIONADO"
+                    }
+                },
+                "tags": [
+                    "filmes"
+                ]
+            }
+        },
+        "/filmes/listall": {
+            "get": {
+                "summary": "Lista todos os Filmes",
+                "operationId": "FilmesController_findAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "example": 1
+                                        },
+                                        "nome": {
+                                            "example": "Nikolas"
+                                        },
+                                        "imagemUrl": {
+                                            "example": "nikolas.jpeg"
+                                        },
+                                        "data_lancamento": {
+                                            "example": "2021-12-09T20:24:27.521Z"
+                                        },
+                                        "duracao": {
+                                            "example": 1
+                                        },
+                                        "genero_id": {
+                                            "example": 1
+                                        },
+                                        "Participantes": {
+                                            "example": [
+                                                {
+                                                    "id": 1
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NÃO EXECUTADO"
+                    }
+                },
+                "tags": [
+                    "filmes"
+                ]
+            }
+        },
+        "/filmes/listid/{id}": {
+            "get": {
+                "summary": "Exibe um Filme pelo seu ID",
+                "operationId": "FilmesController_findOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do filme",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "example": 1
+                                        },
+                                        "nome": {
+                                            "example": "Nikolas"
+                                        },
+                                        "imagemUrl": {
+                                            "example": "nikolas.jpeg"
+                                        },
+                                        "data_lancamento": {
+                                            "example": "2021-12-09T20:24:27.521Z"
+                                        },
+                                        "duracao": {
+                                            "example": 1
+                                        },
+                                        "genero_id": {
+                                            "example": 1
+                                        },
+                                        "Participantes": {
+                                            "example": [
+                                                {
+                                                    "id": 1
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "filmes"
+                ]
+            }
+        },
+        "/filmes/update/{id}": {
+            "patch": {
+                "summary": "Altera um Filme",
+                "operationId": "FilmesController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do filme",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "genero_id": {
+                                        "example": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "EXECUTADO COM SUCESSO"
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "filmes"
+                ]
+            }
+        },
+        "/filmes/delete/{id}": {
+            "delete": {
+                "summary": "Deleta um Filme",
+                "operationId": "FilmesController_remove",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "description": "ID do filme",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "DELETADO COM SUCESSO"
+                    },
+                    "404": {
+                        "description": "ID NÃO ENCONTRADO"
+                    }
+                },
+                "tags": [
+                    "filmes"
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "filmes",
+            "description": ""
+        },
+        {
+            "name": "generos",
+            "description": ""
+        },
+        {
+            "name": "participantes",
+            "description": ""
+        }
+    ],
+    
+    "components": {
+        "schemas": {}
+    }
+}

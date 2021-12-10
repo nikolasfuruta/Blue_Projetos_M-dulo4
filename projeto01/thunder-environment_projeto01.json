@@ -1,0 +1,1 @@
+{"client":"Thunder Client","environmentName":"projeto01","dateExported":"2021-12-10T21:10:50.948Z","version":"1.0","variables":[{"name":"uriFilmes","value":"http://localhost:3000/filmes"},{"name":"uriGeneros","value":"http://localhost:3000/generos"},{"name":"uriParticipantes","value":"http://localhost:3000/participantes"}]}
