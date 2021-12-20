@@ -34,7 +34,8 @@ model Tweet {
 
 model Usuario {
   id              Int         @default(autoincrement()) @id
-  nome            String
+  nome            String      @unique
+  senha           String      @unique
   imagem          String
   bio             String 
   nascimento      DateTime

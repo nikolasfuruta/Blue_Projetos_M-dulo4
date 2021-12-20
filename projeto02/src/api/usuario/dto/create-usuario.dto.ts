@@ -11,6 +11,10 @@ export class CreateUsuarioDto implements Prisma.UsuarioUncheckedCreateInput{
 
     @IsString()
     @IsNotEmpty()
+    senha: string;
+
+    @IsString()
+    @IsNotEmpty()
     imagem: string;
 
     @IsString()
