@@ -1,8 +1,11 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { TweetService } from './tweet.service';
 import { CreateTweetDto } from './dto/create-tweet.dto';
 import { UpdateTweetDto } from './dto/update-tweet.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('tweet')
 @Controller('tweet')
 export class TweetController {
   constructor(private readonly tweetService: TweetService) {}
