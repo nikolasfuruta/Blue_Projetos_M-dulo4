@@ -19,15 +19,26 @@ export class UsuarioService {
 
   async findAll(): Promise<Usuario[]> {
     return await this.prisma.usuario.findMany(
-      { include: { seguidores: true, seguindo: true, tweet: { select: { id: true } } } }
-    );
+      { include: 
+        { 
+          seguidores: { select: { id: true } },
+          seguindo: { select: { id: true } },
+          tweet: { select: { id: true } }
+        }
+      }
+    );   
   }
 
   async findOne(id: number): Promise<Usuario> {
     return await this.prisma.usuario.findUnique(
       { 
         where: { id },
-        include: { seguidores: true, seguindo: true, tweet: { select: { id: true } } }
+        include: 
+        { 
+          seguidores: { select: { id: true } },
+          seguindo: { select: { id: true } },
+          tweet: { select: { id: true } }
+        }
        }
     );
   }

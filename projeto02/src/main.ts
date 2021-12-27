@@ -11,15 +11,16 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   const config = new DocumentBuilder()
   .setTitle('Blue Projeto 02 Módulo 4')
-  .setDescription('API de controle do Twitter')
+  .setDescription('API de controle dE Twitter')
   .setVersion('1.0')
   .addTag('usuario')
   .addTag('tweet')
   .addTag('seguindo')
   .addTag('seguidores')
+  .addTag('login')
   .build();
 const document = SwaggerModule.createDocument(app, config);
-SwaggerModule.setup('swagger', app, document);
+SwaggerModule.setup('api', app, document);
   await app.listen(3000, () => {
     console.log(`SERVIDOR RODANDO NA PORTA ${3000}`);
   });

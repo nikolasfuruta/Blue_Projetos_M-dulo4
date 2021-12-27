@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete,  } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
-import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiParam, ApiProperty, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('usuario')
 @Controller('usuario')
@@ -92,7 +92,24 @@ export class UsuarioController {
       }
     }
   })
-  @ApiOkResponse({ description: 'EXECUTADO COM SUCESSO' })
+  @ApiOkResponse({
+    description: 'EXECUTADO COM SUCESSO',
+    schema: {
+      properties: {
+        id: { example: 2 },
+        nome: { example:"sandro" },
+        senha: { example: "$2b$12$c.J79Hj9pBJScpgt8ffvMOqo5BMRHh0ukrATlSwWimLU3a7Nflzqe" },
+        imagem: { example: "sabrina.jpeg" },
+        bio: { example: "designer" },
+        nascimento: { example: "1996-04-17T03:00:00.000Z" },
+        criado_em: { example: "2021-12-20T04:10:37.244Z" },
+        modificado_em: { example: "2021-12-20T04:10:37.244Z" },
+        seguidores: { example:[] },
+        seguindo: { example:[] },
+        tweet: { example:[] },
+      }
+    }
+  })
   @ApiNotFoundResponse({ description: 'ID NÃO ENCONTRADO' })
   update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
     return this.usuarioService.update(+id, updateUsuarioDto);
