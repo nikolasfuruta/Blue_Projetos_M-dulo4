@@ -11,37 +11,36 @@ datasource db {
 }
 
 model Seguidores {
-  id            Int   @default(autoincrement()) @id
-  usuario_id    Int
-  usuario       Usuario   @relation(fields: [usuario_id], references: [id])
+  id      Int       @id @default(autoincrement())
+  usuario Usuario[]
 }
 
 model Seguindo {
-  id            Int   @default(autoincrement()) @id
-  usuario_id    Int
-  usuario       Usuario   @relation(fields: [usuario_id], references: [id])
+  id         Int     @id @default(autoincrement())
+  usuario_id Int
+  usuario    Usuario @relation(fields: [usuario_id], references: [id])
 }
 
 model Tweet {
-  id              Int       @default(autoincrement()) @id
-  texto           String
-  emoji           String    
-  data_postagem   DateTime  @default(now())
-  curtidas        Int 
-  usuario_id      Int
-  usuario         Usuario   @relation(fields: [usuario_id], references: [id])
+  id            Int      @id @default(autoincrement())
+  texto         String
+  emoji         String
+  data_postagem DateTime @default(now())
+  curtidas      Int
+  usuario_id    Int
+  usuario       Usuario  @relation(fields: [usuario_id], references: [id])
 }
 
 model Usuario {
-  id              Int         @default(autoincrement()) @id
-  nome            String      @unique
-  senha           String      @unique
-  imagem          String
-  bio             String 
-  nascimento      DateTime
-  seguidores      Seguidores[]
-  seguindo        Seguindo[]
-  tweet           Tweet[]
-  criado_em       DateTime    @default(now())
-  modificado_em   DateTime    @updatedAt
+  id            Int          @id @default(autoincrement())
+  nome          String       @unique
+  senha         String       @unique
+  imagem        String
+  bio           String
+  nascimento    DateTime
+  seguidores    Seguidores[]
+  seguindo      Seguindo[]
+  tweet         Tweet[]
+  criado_em     DateTime     @default(now())
+  modificado_em DateTime     @updatedAt
 }
