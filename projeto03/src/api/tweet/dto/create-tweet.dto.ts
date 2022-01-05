@@ -18,8 +18,4 @@ export class CreateTweetDto implements Prisma.TweetUncheckedCreateInput{
     @IsInt()
     @IsNotEmpty()
     curtidas: number;
-
-    @IsInt()
-    @IsNotEmpty()
-    usuario_id: number;
 }

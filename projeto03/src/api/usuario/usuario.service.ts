@@ -18,29 +18,11 @@ export class UsuarioService {
   }
 
   async findAll(): Promise<Usuario[]> {
-    return await this.prisma.usuario.findMany(
-      { include: 
-        { 
-          seguidores: { select: { id: true } },
-          seguindo: { select: { id: true } },
-          tweet: { select: { id: true } }
-        }
-      }
-    );   
+    return await this.prisma.usuario.findMany();   
   }
 
   async findOne(id: number): Promise<Usuario> {
-    return await this.prisma.usuario.findUnique(
-      { 
-        where: { id },
-        include: 
-        { 
-          seguidores: { select: { id: true } },
-          seguindo: { select: { id: true } },
-          tweet: { select: { id: true } }
-        }
-       }
-    );
+    return await this.prisma.usuario.findUnique( {where: { id } });
   }
 
   async update(id: number, info: UpdateUsuarioDto): Promise<Usuario> {
